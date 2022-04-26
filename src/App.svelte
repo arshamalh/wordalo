@@ -1,30 +1,76 @@
 <script>
-	export let name;
+	import TextArea from "./components/TextArea.svelte"
+	let jobDesctiption = "";
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<h2>Wordalo!</h2>
+	<p>
+		Our purpose here is to be simple and useful.
+	</p>
+	<div class="buttons_area">
+		<div class="mini-btn linkedin">
+			Linkedin
+		</div>
+		<div class="mini-btn glassdoor">
+			Glassdoor
+		</div>
+		<div class="mini-btn indeed">
+			Indeed
+		</div>
+		<div class="mini-btn paste">
+			Paste
+		</div>
+		<!-- Maybe they are not only using this service for jobs? -->
+	</div>
+	<TextArea 
+		bind:value={jobDesctiption}
+		placeholder="Enter job description or simply click on paste button at the top!" 
+	/>
 </main>
 
 <style>
 	main {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.buttons_area {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		width: 400px;
+		gap: 10px;
+		padding: 10px;
+		/* border: 2px solid #333; */
+	}
+
+	.mini-btn {
+		padding: 10px;
+		border-radius: 3px;
 		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
+		cursor: alias;
 	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
+	.linkedin {
+		background-color: #2667B3; 
+		color: #fff
 	}
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
+	.glassdoor {
+		background-color: #0CAA41; 
+		color: #fff
+	}
+
+	.indeed {
+		background-color: #002A3A; 
+		color: #fff
+	}
+
+	.paste {
+		background-color: rgb(92, 0, 0); 
+		color: #fff
 	}
 </style>
