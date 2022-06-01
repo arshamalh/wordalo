@@ -1,6 +1,11 @@
 <script>
 	import TextArea from "./components/TextArea.svelte"
+	import Button from "./components/Button.svelte"
 	let jobDesctiption = "";
+
+	function handleSubmit(e) {
+		console.log(jobDesctiption);
+	}
 </script>
 
 <main>
@@ -23,16 +28,26 @@
 		</div>
 		<!-- Maybe they are not only using this service for jobs? -->
 	</div>
-	<TextArea 
-		bind:value={jobDesctiption}
-		placeholder="Enter job description or simply click on paste button at the top!" 
-	/>
+	<form on:submit|preventDefault={handleSubmit}>
+		<TextArea 
+			bind:value={jobDesctiption}
+			placeholder="Enter job description or simply click on paste button at the top!" 
+		/>
+		<Button text="Search"/>
+	</form>
 </main>
 
 <style>
 	main {
 		width: 100%;
 		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	form {
+		all:revert;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
